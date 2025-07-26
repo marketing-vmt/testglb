@@ -101,22 +101,22 @@
     const light = new THREE.HemisphereLight(0xffffff, 0x444444, 1.5);
     scene.add(light);
 
-    const loaderGLTF = new THREE.GLTFLoader();
-    loaderGLTF.load(
-      'liemix.glb',
-      function (gltf) {
-        scene.add(gltf.scene);
-        loader.style.display = 'none';
-      },
-      function (xhr) {
-        const progress = (xhr.loaded / xhr.total) * 100;
-        progressBar.style.width = progress.toFixed(0) + '%';
-      },
-      function (error) {
-        loader.innerHTML = 'Failed to load model.';
-        console.error(error);
-      }
-    );
+const loaderGLTF = new THREE.GLTFLoader();
+loaderGLTF.load(
+  'model.glb',
+  function (gltf) {
+    scene.add(gltf.scene);
+    loader.style.display = 'none';
+  },
+  function (xhr) {
+    const progress = (xhr.loaded / xhr.total) * 100;
+    progressBar.style.width = progress.toFixed(0) + '%';
+  },
+  function (error) {
+    loader.innerHTML = 'Failed to load model.';
+    console.error(error);
+  }
+);
 
     function zoom(zoomIn) {
       const direction = zoomIn ? -0.3 : 0.3;
